@@ -1,0 +1,73 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+interface ICalculator 
+{
+    public int add(int x, int y); 
+    public float divide(int x, int y) ;//throws RuntimeException;
+    
+} 
+
+class Calculator implements ICalculator
+
+{
+public Calculator(){}
+  
+
+   public int add(int x, int y) 
+        {       
+         int c;
+         c=x+y;
+       
+            return c;
+        }       
+        
+    public float divide(int x, int y)
+    { 
+   
+         float c;
+         c= (float) x/y;
+          return c;
+    
+    }
+   
+    
+    }  
+    
+    
+  /* Implement your calculator class here*/
+  public class Main{
+    public static void main(String[] args)
+    {
+        int x,y;
+        String operator; 
+        String user_input;
+        
+        Scanner in= new Scanner(System.in);   
+         
+        user_input = in.nextLine() ;
+        x = Integer.parseInt(user_input.split(" ")[0]);
+        operator = user_input.split(" ")[1];
+        y = Integer.parseInt(user_input.split(" ")[2]);
+       
+    
+    
+        
+        Calculator calc = new Calculator();
+        
+    switch (operator) {
+      case "+":
+         System.out.println(Integer.toString(calc.add(x,y)));break;        
+      case "/":
+       if (y==0){ System.out.println("Error");break;}
+       
+        System.out.println(Float.toString(calc.divide(x,y))) ;break;
+      default:
+        System.out.println("Invalid operator!");
+        break;
+                      }
+    
+    }
+}
